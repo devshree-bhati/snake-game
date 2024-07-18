@@ -27,7 +27,7 @@ Make sure you have Node.js and npm installed on your machine. You can download t
 ### Instructions
 How to Play
 NOTE: Start the game by pressing d
-w Move Up
-a Move Left
-s Move Down
-d Move Right
+- w Move Up
+- a Move Left
+- s Move Down
+- d Move Right
