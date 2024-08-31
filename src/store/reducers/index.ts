@@ -15,6 +15,7 @@ export interface IGlobalState {
   snake: ISnakeCoord[] | []
   disallowedDirection: string
   score: number
+  highScore: number
 }
 
 const globalState: IGlobalState = {
@@ -27,6 +28,7 @@ const globalState: IGlobalState = {
   ],
   disallowedDirection: '',
   score: 0,
+  highScore: 0
 }
 const gameReducer = (state = globalState, action: any) => {
   switch (action.type) {
@@ -80,12 +82,17 @@ const gameReducer = (state = globalState, action: any) => {
       }
 
     case RESET_SCORE:
-      return { ...state, score: 0 }
-
-    case INCREMENT_SCORE:
-      return {
-        ...state,
-        score: state.score + 1,
+      return { 
+        ...state, 
+        score: 0 ,
+      }
+      
+      case INCREMENT_SCORE:
+        const newScore = state.score + 1
+        return {
+          ...state,
+          score: newScore,
+          highScore: Math.max(newScore, state.highScore)
       }
     default:
       return state

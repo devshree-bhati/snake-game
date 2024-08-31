@@ -34,4 +34,4 @@ const Instruction = ({ resetBoard }: IInstructionProps) => (
   </Box>
 )
 
-export default Instruction;
+export default Instruction

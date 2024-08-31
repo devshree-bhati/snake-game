@@ -36,7 +36,7 @@ const CanvasBoard = ({ height, width }: ICanvasBoard) => {
 
   const [gameEnded, setGameEnded] = useState<boolean>(false)
   const [pos, setPos] = useState<IObjectBody>(
-    generateRandomPosition(width - 20, height - 20)
+    generateRandomPosition(width - 20, height - 20, snake1)
   )
   const [isConsumed, setIsConsumed] = useState<boolean>(false)
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
@@ -102,7 +102,7 @@ const CanvasBoard = ({ height, width }: ICanvasBoard) => {
     drawObject(context, snake1, '#91C483')
     drawObject(
       context,
-      [generateRandomPosition(width - 20, height - 20)],
+      [generateRandomPosition(width - 20, height - 20, snake1)],
       '#676FA3'
     ) //Draws object randomly
     window.addEventListener('keypress', handleKeyEvents)
@@ -111,7 +111,7 @@ const CanvasBoard = ({ height, width }: ICanvasBoard) => {
   useEffect(() => {
     //Generate new object
     if (isConsumed) {
-      const posi = generateRandomPosition(width - 20, height - 20)
+      const posi = generateRandomPosition(width - 20, height - 20, snake1)
       setPos(posi)
       setIsConsumed(false)
 
