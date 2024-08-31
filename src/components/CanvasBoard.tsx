@@ -121,7 +121,7 @@ const CanvasBoard = ({ height, width }: ICanvasBoard) => {
       //Increment the score
       dispatch(scoreUpdates(INCREMENT_SCORE))
     }
-  }, [isConsumed, pos, height, width, dispatch])
+  }, [isConsumed, pos, height, width, dispatch, snake1])
 
   useEffect(() => {
     //Draw on canvas each time
