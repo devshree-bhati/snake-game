@@ -8,7 +8,7 @@ const ScoreCard = () => {
   const highScore = useSelector((state: IGlobalState) => state.highScore)
   return (
     <>
-    <Heading as="h2" size="md" mt={5} mb={5}>
+    <Heading as="h2" size="md" mt={5} mb={5} id='scorecard'>
       Highest Score: {highScore}
       <br/>
       Current Score: {score}

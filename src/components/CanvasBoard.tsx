@@ -67,16 +67,20 @@ const CanvasBoard = ({ height, width }: ICanvasBoard) => {
     (event: KeyboardEvent) => {
       if (disallowedDirection) {
         switch (event.key) {
-          case 'w':
+          case 'ArrowUp':
+            event.preventDefault();
             moveSnake(0, -20, disallowedDirection)
             break
-          case 's':
+          case 'ArrowDown':
+            event.preventDefault();
             moveSnake(0, 20, disallowedDirection)
             break
-          case 'a':
+          case 'ArrowLeft':
+            event.preventDefault();
             moveSnake(-20, 0, disallowedDirection)
             break
-          case 'd':
+          case 'ArrowRight':
+            event.preventDefault();
             event.preventDefault()
             moveSnake(20, 0, disallowedDirection)
             break
@@ -86,8 +90,9 @@ const CanvasBoard = ({ height, width }: ICanvasBoard) => {
           disallowedDirection !== 'LEFT' &&
           disallowedDirection !== 'UP' &&
           disallowedDirection !== 'DOWN' &&
-          event.key === 'd'
+          event.key === 'ArrowRight'
         )
+          event.preventDefault();
           moveSnake(20, 0, disallowedDirection) //Move RIGHT at start
       }
     },
@@ -95,7 +100,7 @@ const CanvasBoard = ({ height, width }: ICanvasBoard) => {
   )
 
   const resetBoard = useCallback(() => {
-    window.removeEventListener('keypress', handleKeyEvents)
+    window.removeEventListener('keydown', handleKeyEvents)
     dispatch(resetGame())
     dispatch(scoreUpdates(RESET_SCORE))
     clearBoard(context)
@@ -105,7 +110,7 @@ const CanvasBoard = ({ height, width }: ICanvasBoard) => {
       [generateRandomPosition(width - 20, height - 20, snake1)],
       '#676FA3'
     ) //Draws object randomly
-    window.addEventListener('keypress', handleKeyEvents)
+    window.addEventListener('keydown', handleKeyEvents)
   }, [context, dispatch, handleKeyEvents, height, snake1, width])
 
   useEffect(() => {
@@ -144,15 +149,15 @@ const CanvasBoard = ({ height, width }: ICanvasBoard) => {
     ) {
       setGameEnded(true)
       dispatch(stopGame())
-      window.removeEventListener('keypress', handleKeyEvents)
+      window.removeEventListener('keydown', handleKeyEvents)
     } else setGameEnded(false)
   }, [context, pos, snake1, height, width, dispatch, handleKeyEvents])
 
   useEffect(() => {
-    window.addEventListener('keypress', handleKeyEvents)
+    window.addEventListener('keydown', handleKeyEvents)
 
     return () => {
-      window.removeEventListener('keypress', handleKeyEvents)
+      window.removeEventListener('keydown', handleKeyEvents)
     }
   }, [disallowedDirection, handleKeyEvents])
 

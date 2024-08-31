@@ -11,3 +11,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#heading {
+  margin-top: 0.4em;
+  margin-bottom: 0.4em;
+}
+
+#scorecard {
+  margin: 1em;
+  position: fixed;
+  right: 0;
+  top: 0;
+}
+
+/* .instruction-box {
+  position: fixed;
+  margin-top: 12px;
+  left: 0;
+  top: 10;
+  margin: 2em;
+} */
